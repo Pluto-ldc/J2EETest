@@ -31,6 +31,9 @@ Servers/
 /target/
 /build/
 /classes/
+target/
+build/
+classes/
  
 # built application files
 *.apk
