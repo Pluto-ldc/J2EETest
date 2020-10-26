@@ -34,7 +34,8 @@ Servers/
 target/
 build/
 classes/
- 
+ .externalToolBuilders/
+ /.externalToolBuilders/
 # built application files
 *.apk
 *.ap_
