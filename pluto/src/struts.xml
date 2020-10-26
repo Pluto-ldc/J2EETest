@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="default" extends="struts-default,json-default" namespace="/api/user">
+		<action name="login" class="com.pluto.action.UserAction" method="login">
+			<result type="json">
+				<param name="root">rep_Json</param>
+			</result>
+		</action>
+		<action name="register" class="com.pluto.action.UserAction" method="register">
+			<result type="json">
+				<param name="root">rep_Json</param>
+			</result>
+		</action>
+	</package>
+</struts>
