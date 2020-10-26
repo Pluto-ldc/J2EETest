@@ -17,7 +17,7 @@ public class MySQLConnBean {
 	public void openConn() throws Exception {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql:///test?useSSL=false&characterEncoding=UTF-8";
+			String url = "jdbc:mysql:///test?useSSL=false&amp;allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=UTF-8";
 			String user = "pluto";
 			String passWord = "Ldc0504.@";
 			connection = DriverManager.getConnection(url, user, passWord);
