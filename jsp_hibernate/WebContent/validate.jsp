@@ -1,4 +1,4 @@
-<%@page import="org.hibernate.Query"%>
+<%@page import="org.hibernate.query.Query"%>
 <%@page import="org.easybooks.bookstore.vo.User"%>
 <%@page import="java.util.List"%>
 <%@page import="org.hibernate.Session"%>
@@ -23,10 +23,11 @@
 			SessionFactory sf = configuration.configure().buildSessionFactory();
 			Session session_hib = sf.openSession();
 			String sql="from User u where u.userName = ?0 and u.passWord = ?1 ";
-			Query query_hib=session_hib.createQuery(sql);
-			query_hib.setParameter(0, userName);
-			query_hib.setParameter(1, passWord);
-			List<User> users=query_hib.list();
+			Query<User> query_hib = session_hib.createQuery(sql,User.class)
+					.setParameter(0, userName)
+					.setParameter(1, passWord)
+					.setMaxResults(1);
+			List<User> users=query_hib.getResultList();
 			if(users.size()!=0){
 				validated=true;
 			}

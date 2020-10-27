@@ -1,3 +1,4 @@
+<%@page import="org.springframework.context.ConfigurableApplicationContext"%>
 <%@page import="org.springframework.context.support.ClassPathXmlApplicationContext"%>
 <%@page import="org.springframework.context.ApplicationContext"%>
 <%@page import="org.easybooks.bookstore.vo.User"%>
@@ -20,6 +21,7 @@
 			ApplicationContext applicationContext=new ClassPathXmlApplicationContext(new String[]{"applicationContext.xml"});
 			IUserDAO userDAO=(UserDAO)applicationContext.getBean("UserDAO");
 			User user=userDAO.validate(new User(userName,passWord));
+			((ConfigurableApplicationContext)applicationContext).close();
 			if(user!=null){
 				validated=true;
 			}

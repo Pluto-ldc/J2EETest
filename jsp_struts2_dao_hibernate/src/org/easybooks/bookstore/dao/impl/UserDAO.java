@@ -3,10 +3,10 @@ package org.easybooks.bookstore.dao.impl;
 import java.util.List;
 import org.easybooks.bookstore.dao.IUserDAO;
 import org.easybooks.bookstore.vo.User;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 public class UserDAO implements IUserDAO {
 
@@ -17,10 +17,10 @@ public class UserDAO implements IUserDAO {
 		Configuration configuration = new Configuration();
 		SessionFactory sessionFactory = configuration.configure().buildSessionFactory();
 		Session session = sessionFactory.openSession();
-		Query query = session.createQuery(sql);
+		Query<User> query = session.createQuery(sql,User.class).setMaxResults(1);
 		query.setParameter(0, user.getUserName());
 		query.setParameter(1, user.getPassWord());
-		List<User> users = query.list();
+		List<User> users = query.getResultList();
 		User exsitUser;
 		if (users.size() != 0) {
 			exsitUser = users.get(0);
