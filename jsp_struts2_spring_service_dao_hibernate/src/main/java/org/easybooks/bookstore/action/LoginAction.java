@@ -27,8 +27,17 @@ public class LoginAction extends ActionSupport {
 		this.user = user;
 	}
 
-	public String execute() throws Exception {
+	public String execute() {
 		User user=userService.validateUser(this.user);
+		if (user != null) {
+			return SUCCESS;
+		} else {
+			return ERROR;
+		}
+	}
+	
+	public String register() {
+		User user=userService.registerUser(this.user);
 		if (user != null) {
 			return SUCCESS;
 		}else {

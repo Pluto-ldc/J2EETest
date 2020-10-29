@@ -8,5 +8,9 @@
             <result name="success">/welcome.jsp</result>
             <result name="error" type="redirect">/error.jsp</result>
         </action>
+        <action name="register" class="loginAction" method="register">
+            <result name="success">/login.jsp</result>
+            <result name="error" type="redirect">/error.jsp</result>
+        </action>
     </package>
 </struts>

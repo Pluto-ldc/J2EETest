@@ -4,8 +4,8 @@
 	<body>
 		<form action="register.action"method="post">
 			用户注册<br>
-			姓名:<input type="text" name="user.usernName"size="20"/><br>
-			密&nbsp;&nbsp;码:<input type="password" name="user.passWord"size="20"/><br>
+			姓名:<input type="text" name="user.userName" size="20"/><br>
+			密&nbsp;&nbsp;码:<input type="password" name="user.passWord" size="20"/><br>
 			<input type="submit" value="提交"/>
 		</form>
 	</body>
