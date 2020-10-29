@@ -10,9 +10,9 @@ import com.opensymphony.xwork2.ActionSupport;
 public class LoginAction extends ActionSupport {
 
 	private String userName;
-	
+
 	private String passWord;
-	
+
 	public String getUserName() {
 		return userName;
 	}
@@ -30,28 +30,29 @@ public class LoginAction extends ActionSupport {
 	}
 
 	public String execute() throws Exception {
-		String userName=getUserName();
-		String passWord=getPassWord();
-		boolean validated=false;
-		MySQLConnBean mySQLConnBean=new MySQLConnBean();
-		
-		String sql="select * from user";
+		String userName = getUserName();
+		String passWord = getPassWord();
+		boolean validated = false;
+		MySQLConnBean mySQLConnBean = new MySQLConnBean();
+
+		String sql = "select * from user";
 		mySQLConnBean.openConn();
-		ResultSet resultSet=mySQLConnBean.executeQuery(sql);
-		while(resultSet.next()) {
-			if(resultSet.getString("userName").compareTo(userName)==0&&resultSet.getString("passWord").compareTo(passWord)==0){
-				validated=true;
+		ResultSet resultSet = mySQLConnBean.executeQuery(sql);
+		while (resultSet.next()) {
+			if (resultSet.getString("userName").compareTo(userName) == 0
+					&& resultSet.getString("passWord").compareTo(passWord) == 0) {
+				validated = true;
 				break;
 			}
 		}
 		resultSet.close();
 		mySQLConnBean.closeStatement();
 		mySQLConnBean.closeConnection();
-		if(validated) {
+		if (validated) {
 			return SUCCESS;
-		}else{
+		} else {
 			return ERROR;
 		}
 	}
-	
+
 }
