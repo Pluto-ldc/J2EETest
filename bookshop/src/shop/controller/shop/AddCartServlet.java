@@ -2,6 +2,7 @@ package shop.controller.shop;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -40,7 +41,7 @@ public class AddCartServlet extends HttpServlet {
 		book.setId(bookId);
 		BookModel bookModel = new BookModel();
 		Date nowDate = new Date();
-		String nowString = nowDate.toLocaleString();
+		String nowString = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(nowDate);
 		try {
 			book = bookModel.getBook(book);
 		} catch (SQLException e) {
