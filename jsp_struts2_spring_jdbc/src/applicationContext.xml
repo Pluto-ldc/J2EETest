@@ -11,5 +11,5 @@
         http://www.springframework.org/schema/aop
         https://www.springframework.org/schema/aop/spring-aop.xsd">
 
-	<bean id="login" class="org.easybooks.bookstore.action.LoginAction"/>
+	<bean id="loginAction" class="org.easybooks.bookstore.action.LoginAction"/>
 </beans>
