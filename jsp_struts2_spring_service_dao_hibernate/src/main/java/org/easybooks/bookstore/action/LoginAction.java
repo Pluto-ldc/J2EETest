@@ -8,7 +8,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class LoginAction extends ActionSupport {
 
 	private User user;
-	
+
 	protected IUserService userService;
 
 	public IUserService getUserService() {
@@ -28,20 +28,12 @@ public class LoginAction extends ActionSupport {
 	}
 
 	public String execute() {
-		User user=userService.validateUser(this.user);
-		if (user != null) {
-			return SUCCESS;
-		} else {
-			return ERROR;
-		}
+		User user = userService.validateUser(this.user);
+		return user == null ? ERROR : SUCCESS;
 	}
-	
+
 	public String register() {
-		User user=userService.registerUser(this.user);
-		if (user != null) {
-			return SUCCESS;
-		}else {
-			return ERROR;
-		}
+		User user = userService.registerUser(this.user);
+		return user == null ? ERROR : SUCCESS;
 	}
 }

@@ -14,11 +14,11 @@ public class BaseDAO {
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-	
+
 	public Session getSession() {
-		
+
 		return sessionFactory.openSession();
-		
+
 	}
-	
+
 }

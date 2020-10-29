@@ -7,8 +7,7 @@ import org.easybooks.bookstore.vo.User;
 public class UserService implements IUserService {
 
 	private IUserDAO userDAO;
-	
-	
+
 	public IUserDAO getUserDAO() {
 		return userDAO;
 	}
@@ -26,12 +25,8 @@ public class UserService implements IUserService {
 	@Override
 	public User registerUser(User user) {
 		// TODO Auto-generated method stub
-		Integer code=userDAO.saveUser(user);
-		if(code!=null) {
-			return userDAO.validate(user);
-		}else {
-			return null;
-		}
+		Integer code = userDAO.saveUser(user);
+		return code != null ? userDAO.validate(user) : null;
 	}
 
 }
