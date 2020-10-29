@@ -10,8 +10,7 @@
         http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
         http://www.springframework.org/schema/aop
         https://www.springframework.org/schema/aop/spring-aop.xsd">
-	<bean id="dataSource"
-		class="org.apache.commons.dbcp2.BasicDataSource"
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName"
 			value="com.mysql.cj.jdbc.Driver" />
@@ -21,8 +20,7 @@
 		<property name="password" value="Ldc0504.@" />
 	</bean>
 
-	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="hibernateProperties">
 			<value>
@@ -31,23 +29,29 @@
 		</property>
 		<property name="mappingResources">
 			<list>
-				<value>org/easybooks/bookstore/vo/User.hbm.xml
+				<value>
+					org/easybooks/bookstore/vo/User.hbm.xml
 				</value>
 			</list>
 		</property>
 	</bean>
 
-	<bean id="txManager"
-		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+	<bean id="txManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
-	<bean id="BaseDAO" class="org.easybooks.bookstore.dao.BaseDAO">
+	<bean id="baseDAO" class="org.easybooks.bookstore.dao.BaseDAO">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	<bean id="UserDAO"
-		class="org.easybooks.bookstore.dao.impl.UserDAO" parent="BaseDAO" />
-	<bean id="login"
-		class="org.easybooks.bookstore.action.LoginAction" />
-	<tx:annotation-driven transaction-manager="txManager"/>
+	<bean id="userDAO" class="org.easybooks.bookstore.dao.impl.UserDAO" parent="baseDAO" />
+	
+	<bean id="userService" class="org.easybooks.bookstore.service.impl.UserService">
+		<property name="userDAO" ref="userDAO" />
+	</bean>
+	
+	<bean id="loginAction" class="org.easybooks.bookstore.action.LoginAction">
+		<property name="userService" ref="userService"></property>
+	</bean>
+	
+	<tx:annotation-driven transaction-manager="txManager" />
 </beans>
