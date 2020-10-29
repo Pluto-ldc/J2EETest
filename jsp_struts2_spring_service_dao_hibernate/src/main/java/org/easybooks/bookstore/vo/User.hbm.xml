@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 2020年10月2日 下午2:59:36 by Hibernate Tools 5.4.18.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="test" dynamic-insert="false" dynamic-update="false" mutable="true" name="org.easybooks.bookstore.vo.User" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="user">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <property generated="never" lazy="false" name="userName" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="username" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="passWord" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="password" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>
