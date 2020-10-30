@@ -51,6 +51,7 @@ public class BookDAO extends BaseDAO implements IBookDAO {
 
 	public List<Book> getRequiredBookbyHql(String hql) {
 		Session session = getSession();
+		System.out.println(hql);
 		Query<Book> query = session.createQuery(hql, Book.class);
 		List<Book> books = query.list();
 		return books;

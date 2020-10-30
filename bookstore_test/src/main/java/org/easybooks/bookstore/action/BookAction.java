@@ -93,7 +93,7 @@ public class BookAction extends ActionSupport {
 	public String searchBook() throws Exception {
 		StringBuffer hql = new StringBuffer("from Book b ");
 		if (bookName != null && bookName.length() != 0)
-			hql.append("where b.bookname like '%" + bookName + "%'");
+			hql.append("where b.bookName like '%" + bookName + "%'");
 		List<?> books = bookService.getRequiredBookbyHql(hql.toString());
 		Map<String, Object> request = (Map<String, Object>) ActionContext.getContext().get("request");
 		request.put("books", books);

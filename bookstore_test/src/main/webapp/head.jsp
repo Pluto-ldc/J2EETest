@@ -58,7 +58,7 @@
 					</div>
 					<div class="head_bottom">
 						<form action="searchBook.action" method="post">
-							<input type="text" name="bookname" size="50" align="middle" />
+							<input type="text" name="bookName" size="50" align="middle" />
 							<input type="image" name="submit" src="picture/search02.jpg" align="top" style="width: 48px; height: 22px" />
 						</form>
 					</div>

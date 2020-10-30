@@ -32,7 +32,7 @@
 										<tr>
 											<td>
 												书名:
-												<s:property value="#book.bookname" /><br>
+												<s:property value="#book.bookName" /><br>
 											</td>
 										</tr>
 										<tr>
@@ -45,7 +45,7 @@
 												<form action="addToCart.action" method="post" onsubmit="return check(this)">
 													数量:
 													<input type="text" name="quantity" value="1" size="4" />
-													<input type="hidden" name="bookid" value="<s:property value=" #book.bookid" />">
+													<input type="hidden" name="bookId" value="<s:property value=" #book.bookId" />">
 													<input type="image" name="submit" src="/bookstore_test/picture/buy.gif" />
 												</form>
 											</td>

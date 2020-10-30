@@ -21,7 +21,7 @@
 				</div>
 			</div>
 			<div class="right">
-				<div class="right_box">
+				<div class="right_box" style="width: 100%;">
 					<s:set var="items" value="#session.cart.items" />
 					<s:if test="#items.size!=0">
 						您购物车中的图书：<br>
@@ -36,26 +36,28 @@
 							</tr>
 							<tr>
 								<s:iterator value="#items">
-									<form action="updateCart" method="post" onsubmit="return check(this)">
-										<table>
-											<tr>
-												<td>
-													<s:property value="value.book.bookName" />
-												</td>
-												<td>
-													<s:property value="value.book.price" />
-												</td>
-												<td>
-													<input type="text" name="quantity" value="<s:property value=" value.quantity" />"size="4"/>
-													<input type="hidden" name="bookId" value="<s:property value=" value.book.bookId" />"/>
-												</td>
-												<td valign="middle">
-													<input type="submit" value="更新">
-												</td>
-											</tr>
-										</table>
-									</form>
-									<td>
+									<td colspan="4">
+										<form action="updateCart" method="post" onsubmit="return check(this)">
+											<table width="100%">
+												<tr>
+													<td width="55.5%" align="center">
+														<s:property value="value.book.bookName" />
+													</td>
+													<td width="16.66%" align="center">
+														<s:property value="value.book.price" />
+													</td>
+													<td width="16.66%" align="center">
+														<input type="text" name="quantity" value="<s:property value=" value.quantity" />"size="4"/>
+														<input type="hidden" name="bookId" value="<s:property value=" value.book.bookId" />"/>
+													</td>
+													<td valign="middle" width="11.11%" align="center">
+														<input type="submit" value="更新">
+													</td>
+												</tr>
+											</table>
+										</form>
+									</td>
+									<td align="center" width="10%">
 										<form action="deleteBook.action">
 											<input type="hidden" name="bookId" value="<s:property value=" value.book.bookId" />"/>
 											<input type="submit" value="删除">
