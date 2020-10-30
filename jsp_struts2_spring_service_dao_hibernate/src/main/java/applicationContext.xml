@@ -10,12 +10,10 @@
         http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
         http://www.springframework.org/schema/aop
         https://www.springframework.org/schema/aop/spring-aop.xsd">
-	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
-		destroy-method="close">
-		<property name="driverClassName"
-			value="com.mysql.cj.jdbc.Driver" />
-		<property name="url"
-			value="jdbc:mysql://localhost:3306/test?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;useUnicode=true&amp;characterEncoding=UTF-8" />
+        
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/test?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;useUnicode=true&amp;characterEncoding=UTF-8" />
 		<property name="username" value="pluto" />
 		<property name="password" value="Ldc0504.@" />
 	</bean>
@@ -43,6 +41,7 @@
 	<bean id="baseDAO" class="org.easybooks.bookstore.dao.BaseDAO">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	
 	<bean id="userDAO" class="org.easybooks.bookstore.dao.impl.UserDAO" parent="baseDAO" />
 	
 	<bean id="userService" class="org.easybooks.bookstore.service.impl.UserService">
@@ -50,8 +49,9 @@
 	</bean>
 	
 	<bean id="loginAction" class="org.easybooks.bookstore.action.LoginAction">
-		<property name="userService" ref="userService"></property>
+		<property name="userService" ref="userService" />
 	</bean>
 	
 	<tx:annotation-driven transaction-manager="txManager" />
+	
 </beans>
