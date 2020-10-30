@@ -34,37 +34,39 @@
 									<font color="gray">操作</font>
 								</td>
 							</tr>
-							<s:iterator value="#items">
-								<form action="updateCart" method="post" onsubmit="return check(this)">
-									<tr>
-										<td>
-											<s:property value="value.book.bookname" />
-										</td>
-										<td>
-											<s:property value="value.book.price" />
-										</td>
-										<td>
-											<input type="text" name="quantity" value="<s:property value=" value.quantity" />"size="4"/>
-											<input type="hidden" name="bookid" value="<s:property value=" value.book.bookid" />"/>
-										</td>
-
-										<td valign="middle">
-											<input type="submit" value="更新" />
-								</form>
-
-								<td>
-									<form action="deleteBook.action">
-										<input type="hidden" name="bookid" value="<s:property value=" value.book.bookid" />"/>
-										<input type="submit" value="删除">
+							<tr>
+								<s:iterator value="#items">
+									<form action="updateCart" method="post" onsubmit="return check(this)">
+										<table>
+											<tr>
+												<td>
+													<s:property value="value.book.bookName" />
+												</td>
+												<td>
+													<s:property value="value.book.price" />
+												</td>
+												<td>
+													<input type="text" name="quantity" value="<s:property value=" value.quantity" />"size="4"/>
+													<input type="hidden" name="bookId" value="<s:property value=" value.book.bookId" />"/>
+												</td>
+												<td valign="middle">
+													<input type="submit" value="更新">
+												</td>
+											</tr>
+										</table>
 									</form>
-								</td>
-								</tr>
-							</s:iterator>
+									<td>
+										<form action="deleteBook.action">
+											<input type="hidden" name="bookId" value="<s:property value=" value.book.bookId" />"/>
+											<input type="submit" value="删除">
+										</form>
+									</td>
+								</s:iterator>
+							</tr>
 						</table>
-						<hr />
 						消费金额：
 						<s:property value="#session.cart.totalPrice" />元
-						<a href="checkout.action"><img src="/bookstore/picture/count.gif" /></a>
+						<a href="checkout.action"><img src="/bookstore_test/picture/count.gif" /></a>
 					</s:if>
 					<s:else>
 						对不起！您还没有选购图书！

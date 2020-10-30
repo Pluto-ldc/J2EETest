@@ -1,6 +1,6 @@
 <!DOCTYPE dwr PUBLIC
-    "-//GetAhead Limited//DTD Direct Web Remoting 1.0//EN"
-    "http://www.getahead.ltd.uk/dwr/dwr10.dtd">
+    "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN"
+    "http://www.getahead.ltd.uk/dwr/dwr20.dtd">
 <dwr>
 	<allow>		<!-- 定义DWR能够创建和转换的类 ,转换的类是UserService，转换后生成UserDAOAjax.jsp-->
 		<create javascript="UserDAOAjax" creator="spring">

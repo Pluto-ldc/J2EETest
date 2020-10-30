@@ -24,7 +24,7 @@
 						<table width="600" border="0">
 							<tr>
 								<td width="200" align="center">
-									<img src="/bookstore/picture/<s:property value=" book.picture" />">
+									<img src="/bookstore_test/picture/<s:property value=" book.picture" />">
 								</td>
 								<td>
 									<table>
@@ -41,7 +41,7 @@
 												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												<img src="/bookstore/picture/buy.gif" />
+												<img src="/bookstore_test/picture/buy.gif" />
 											</td>
 										</tr>
 									</table>

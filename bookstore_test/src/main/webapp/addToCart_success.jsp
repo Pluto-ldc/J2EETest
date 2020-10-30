@@ -22,9 +22,9 @@
 					<font face="宋体">图书添加成功</font>
 					<form action="browseBookPaging.action" method="post">
 						<input type="hidden" name="catalogid" value="<s:property value=" #session['catalogid']" />">
-						<input type="image" name="submit" src="/bookstore/picture/continue.gif">
+						<input type="image" name="submit" src="/bookstore_test/picture/continue.gif">
 					</form>
-					<a href="#"><img src="/bookstore/picture/count.gif"></a>
+					<a href="#"><img src="/bookstore_test/picture/count.gif"></a>
 				</div>
 			</div>
 		</div>

@@ -6,6 +6,7 @@ import org.easybooks.bookstore.service.IBookService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import org.easybooks.bookstore.util.Pager;
+import org.easybooks.bookstore.vo.Book;
 
 public class BookAction extends ActionSupport {
 	/**
@@ -14,52 +15,9 @@ public class BookAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 	protected ICatalogService catalogService;
 	protected IBookService bookService;
-	protected Integer catalogid; 
+	protected Integer catalogId;
 	private Integer currentPage = 1;
-	private String bookname;
-
-	public String browseCatalog() throws Exception {
-		List<?> catalogs = catalogService.getAllCatalogs();
-		Map<String, Object> request = (Map<String, Object>) ActionContext.getContext().get("request");
-		request.put("catalogs", catalogs);
-		return SUCCESS;
-	}
-
-	public String browseBook() throws Exception {
-		List<?> books = bookService.getBookbyCatalogid(catalogid);
-		Map<String, Object> request = (Map<String, Object>) ActionContext.getContext().get("request");
-		request.put("books", books);
-		return SUCCESS;
-	}
-
-	public String browseBookPaging() throws Exception {
-		int totalSize = bookService.getTotalbyCatalog(catalogid);
-		Pager pager = new Pager(currentPage, totalSize);
-		List<?> books = bookService.getBookbyCatalogidPaging(catalogid, currentPage, pager.getPageSize());
-		Map<String, Object> request = (Map<String, Object>) ActionContext.getContext().get("request");
-		request.put("books", books);
-		request.put("pager", pager);
-		Map<String, Object> session = ActionContext.getContext().getSession();
-		session.put("catalogid", catalogid);
-		return SUCCESS;
-	}
-
-	public String searchBook() throws Exception {
-		StringBuffer hql = new StringBuffer("from Book b ");
-		if (bookname != null && bookname.length() != 0)
-			hql.append("where b.bookname like '%" + bookname + "%'");
-		List<?> books = bookService.getRequiredBookbyHql(hql.toString());
-		Map<String, Object> request = (Map<String, Object>) ActionContext.getContext().get("request");
-		request.put("books", books);
-		return SUCCESS;
-	}
-
-	public String browseNewBook() throws Exception {
-		List<?> books = bookService.getNewBook();
-		Map<String, Object> request = (Map<String, Object>) ActionContext.getContext().get("request");
-		request.put("books", books);
-		return SUCCESS;
-	}
+	private String bookName;
 
 	public ICatalogService getCatalogService() {
 		return catalogService;
@@ -67,14 +25,6 @@ public class BookAction extends ActionSupport {
 
 	public void setCatalogService(ICatalogService catalogService) {
 		this.catalogService = catalogService;
-	}
-
-	public Integer getCatalogid() {
-		return catalogid;
-	}
-
-	public void setCatalogid(Integer catalogid) {
-		this.catalogid = catalogid;
 	}
 
 	public IBookService getBookService() {
@@ -93,11 +43,69 @@ public class BookAction extends ActionSupport {
 		this.currentPage = currentPage;
 	}
 
-	public String getBookname() {
-		return bookname;
+	public Integer getCatalogId() {
+		return catalogId;
 	}
 
-	public void setBookname(String bookname) {
-		this.bookname = bookname;
+	public void setCatalogId(Integer catalogId) {
+		this.catalogId = catalogId;
 	}
+
+	public String getBookName() {
+		return bookName;
+	}
+
+	public void setBookName(String bookName) {
+		this.bookName = bookName;
+	}
+
+	@SuppressWarnings("unchecked")
+	public String browseCatalog() throws Exception {
+		List<?> catalogs = catalogService.getAllCatalogs();
+		Map<String, Object> request = (Map<String, Object>) ActionContext.getContext().get("request");
+		request.put("catalogs", catalogs);
+		return SUCCESS;
+	}
+
+	@SuppressWarnings("unchecked")
+	public String browseBook() throws Exception {
+		List<?> books = bookService.getBookbyCatalogid(catalogId);
+		Map<String, Object> request = (Map<String, Object>) ActionContext.getContext().get("request");
+		request.put("books", books);
+		return SUCCESS;
+	}
+
+	@SuppressWarnings("unchecked")
+	public String browseBookPaging() throws Exception {
+		int totalSize = bookService.getTotalbyCatalog(catalogId);
+		Pager pager = new Pager(currentPage, totalSize);
+		List<Book> books = bookService.getBookbyCatalogidPaging(catalogId, currentPage, pager.getPageSize());
+		Map<String, Object> request = (Map<String, Object>) ActionContext.getContext().get("request");
+		
+		request.put("books", books);
+		request.put("pager", pager);
+		Map<String, Object> session = ActionContext.getContext().getSession();
+		session.put("catalogid", catalogId);
+		return SUCCESS;
+	}
+
+	@SuppressWarnings("unchecked")
+	public String searchBook() throws Exception {
+		StringBuffer hql = new StringBuffer("from Book b ");
+		if (bookName != null && bookName.length() != 0)
+			hql.append("where b.bookname like '%" + bookName + "%'");
+		List<?> books = bookService.getRequiredBookbyHql(hql.toString());
+		Map<String, Object> request = (Map<String, Object>) ActionContext.getContext().get("request");
+		request.put("books", books);
+		return SUCCESS;
+	}
+
+	@SuppressWarnings("unchecked")
+	public String browseNewBook() throws Exception {
+		List<?> books = bookService.getNewBook();
+		Map<String, Object> request = (Map<String, Object>) ActionContext.getContext().get("request");
+		request.put("books", books);
+		return SUCCESS;
+	}
+
 }

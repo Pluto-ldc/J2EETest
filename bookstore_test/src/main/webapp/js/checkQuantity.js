@@ -1,7 +1,7 @@
 function check(form) {
 	var sl=parseInt(form.quantity.value);
 	if(sl<=0){
-		window.alert("¹ºÂòÊýÁ¿²»ÄÜÐ¡ÓÚµÈÓÚ0£¡");
+		window.alert("æœ€å°‘æ•°é‡ä¸º1ï¼");
 		form.quantity.focus();
 		return false;
 	}

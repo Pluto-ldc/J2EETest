@@ -4,7 +4,6 @@ import java.util.Map;
 
 import org.easybooks.bookstore.service.IUserService;
 import org.easybooks.bookstore.vo.User;
-import org.easybooks.bookstore.service.impl.UserService;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ActionContext;
 

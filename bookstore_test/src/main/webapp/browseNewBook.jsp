@@ -16,7 +16,7 @@
 			<table width="600" border="0">
 				<tr>
 					<td width="200" align="center">
-						<img src="/bookstore/picture/<s:property value=" #book.picture" />">
+						<img src="/bookstore_test/picture/<s:property value=" #book.picture" />">
 					</td>
 					<td>
 						<table>
@@ -38,7 +38,7 @@
 										数量:
 										<input type="text" name="quantity" value="0" size="4" />
 										<input type="hidden" name="bookid" value="<s:property value=" #book.bookid" />">
-										<input type="image" name="submit" src="/bookstore/picture/buy.gif" />
+										<input type="image" name="submit" src="/bookstore_test/picture/buy.gif" />
 									</form>
 								</td>
 							</tr>

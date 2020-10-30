@@ -25,7 +25,7 @@
 								<s:property value="#session.user.username" />
 							</s:if>
 							<strong>
-								<a href="/bookstore/showCart.jsp">
+								<a href="/bookstore_test/showCart.jsp">
 									<img height="15" src="picture/buy01.jpg" width="16">&nbsp;购物车
 								</a>
 							</strong> |

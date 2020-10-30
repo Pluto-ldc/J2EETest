@@ -15,7 +15,7 @@ public class BookDAO extends BaseDAO implements IBookDAO {
 		query.setParameter(0, catalogId);
 		List<Book> books = query.list();
 		session.close();
-		return null;
+		return books;
 	}
 
 	public List<Book> getBookbycatalogIdPaging(Integer catalogId, int currentPage, int pageSize) {

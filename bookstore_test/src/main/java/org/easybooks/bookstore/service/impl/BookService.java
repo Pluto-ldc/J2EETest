@@ -1,7 +1,6 @@
 package org.easybooks.bookstore.service.impl;
 
 import java.util.List;
-
 import org.easybooks.bookstore.dao.IBookDAO;
 import org.easybooks.bookstore.service.IBookService;
 import org.easybooks.bookstore.vo.Book;
