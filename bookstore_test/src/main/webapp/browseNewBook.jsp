@@ -1,49 +1,52 @@
-<%@ page contentType="text/html;charset=gb2312"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html>
-<head>
-	<title>ÍøÉÏ¹ºÊéÏµÍ³</title>
-	<link href="css/bookstore.css" rel="stylesheet" type="text/css"/>
-	<script type="text/javascript" src="js/checkQuantity.js"></script>
-</head>
-<body>
-			<h3>×îĞÂÍ¼ÊéÍÆ¼ö£º</h3>
-		
+	<head>
+		<title>ç½‘ä¸Šè´­ä¹¦ç³»ç»Ÿ</title>
+		<link href="css/bookstore.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="js/checkQuantity.js"></script>
+	</head>
+	<body>
+		<h3>æœ€æ–°å›¾ä¹¦æ¨èï¼š</h3>
+
 		<s:iterator value="#request['books']" var="book">
-					<table width="600" border="0">
-						<tr>
-							<td width="200" align="center">
-								<img src="/bookstore/picture/<s:property value="#book.picture"/>">
-							</td>
-							<td>
-								<table>
-									<tr>
-										<td>
-										ÊéÃû:<s:property value="#book.bookname"/><br>
-										</td>
-									</tr>
-									<tr>
-										<td>
-							¼Û¸ñ:<s:property value="#book.price"/>Ôª
-												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					
-			<form action="addToCart.action" method="post" onsubmit="return check(this)">
-				ÊıÁ¿:
-				<input type="text" name="quantity" value="0" size="4"/>
-				<input type="hidden" name="bookid" value="<s:property value="#book.bookid"/>">
-				<input type="image" name="submit" src="/bookstore/picture/buy.gif"/>
-			</form>
-										</td>
-									</tr>
-								</table>
-							</td>
-						</tr>
-					</table>
+			<table width="600" border="0">
+				<tr>
+					<td width="200" align="center">
+						<img src="/bookstore/picture/<s:property value=" #book.picture" />">
+					</td>
+					<td>
+						<table>
+							<tr>
+								<td>
+									ä¹¦å:
+									<s:property value="#book.bookname" /><br>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									ä»·æ ¼:
+									<s:property value="#book.price" />å…ƒ
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+									<form action="addToCart.action" method="post" onsubmit="return check(this)">
+										æ•°é‡:
+										<input type="text" name="quantity" value="0" size="4" />
+										<input type="hidden" name="bookid" value="<s:property value=" #book.bookid" />">
+										<input type="image" name="submit" src="/bookstore/picture/buy.gif" />
+									</form>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
 		</s:iterator>
 
-</body>
+	</body>
 </html>

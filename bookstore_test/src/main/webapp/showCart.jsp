@@ -1,75 +1,77 @@
-<%@ page contentType="text/html;charset=gb2312"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html>
-<head>
-	<title>ÍøÉÏÊéµê</title>
-	<link href="css/bookstore.css" rel="stylesheet" type="text/css"/>
-	<script type="text/javascript" src="js/checkQuantity.js"></script>
-</head>
-<body>
-	<jsp:include page="head.jsp"/>
-	<div class="content">
-		<div class="left">
-			<div class="list_box">
-				<div class="list_bk">
-				<!-- µ÷ÓÃÃûÎªbrowseCatalogµÄÂß¼­actio ²¢½«½á¹û°üº¬µ½±¾Ò³ÃæÖÐ -->
-					<s:action name="browseCatalog" executeResult="true"/>
+	<head>
+		<title>ç½‘ä¸Šä¹¦åº—</title>
+		<link href="css/bookstore.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="js/checkQuantity.js"></script>
+	</head>
+	<body>
+		<jsp:include page="head.jsp" />
+		<div class="content">
+			<div class="left">
+				<div class="list_box">
+					<div class="list_bk">
+						<!-- è°ƒç”¨åä¸ºbrowseCatalogçš„é€»è¾‘actio å¹¶å°†ç»“æžœåŒ…å«åˆ°æœ¬é¡µé¢ä¸­ -->
+						<s:action name="browseCatalog" executeResult="true" />
+					</div>
+				</div>
+			</div>
+			<div class="right">
+				<div class="right_box">
+					<s:set var="items" value="#session.cart.items" />
+					<s:if test="#items.size!=0">
+						æ‚¨è´­ç‰©è½¦ä¸­çš„å›¾ä¹¦ï¼š<br>
+						<table id="td" cellSpacing="2" cellSpacing="5" width="95%" align="center" border="0">
+							<tr>
+								<td bgcolor="rgb(238,238,238)" align="center" width="50%" height="12">ä¹¦å</td>
+								<td bgcolor="rgb(238,238,238)" align="center" width="15%">å®šä»·</td>
+								<td bgcolor="rgb(238,238,238)" align="center" width="15%">æ•°é‡</td>
+								<td bgcolor="rgb(238,238,238)" align="center" width="20%" colspan="2">
+									<font color="gray">æ“ä½œ</font>
+								</td>
+							</tr>
+							<s:iterator value="#items">
+								<form action="updateCart" method="post" onsubmit="return check(this)">
+									<tr>
+										<td>
+											<s:property value="value.book.bookname" />
+										</td>
+										<td>
+											<s:property value="value.book.price" />
+										</td>
+										<td>
+											<input type="text" name="quantity" value="<s:property value=" value.quantity" />"size="4"/>
+											<input type="hidden" name="bookid" value="<s:property value=" value.book.bookid" />"/>
+										</td>
+
+										<td valign="middle">
+											<input type="submit" value="æ›´æ–°" />
+								</form>
+
+								<td>
+									<form action="deleteBook.action">
+										<input type="hidden" name="bookid" value="<s:property value=" value.book.bookid" />"/>
+										<input type="submit" value="åˆ é™¤">
+									</form>
+								</td>
+								</tr>
+							</s:iterator>
+						</table>
+						<hr />
+						æ¶ˆè´¹é‡‘é¢ï¼š
+						<s:property value="#session.cart.totalPrice" />å…ƒ
+						<a href="checkout.action"><img src="/bookstore/picture/count.gif" /></a>
+					</s:if>
+					<s:else>
+						å¯¹ä¸èµ·ï¼æ‚¨è¿˜æ²¡æœ‰é€‰è´­å›¾ä¹¦ï¼
+					</s:else>
 				</div>
 			</div>
 		</div>
-		<div class="right">
-			<div class="right_box">
-			<s:set var="items" value="#session.cart.items"/>
-			<s:if test="#items.size!=0">
-			Äú¹ºÎï³µÖÐµÄÍ¼Êé£º<br>
-			<table id="td" cellSpacing="2" cellSpacing="5" width="95%" align="center" border="0">
-			<tr>
-			<td bgcolor="rgb(238,238,238)" align="center" width="50%" height="12">ÊéÃû</td>
-			<td bgcolor="rgb(238,238,238)" align="center" width="15%">¶¨¼Û</td>
-			<td bgcolor="rgb(238,238,238)" align="center" width="15%">ÊýÁ¿</td>
-			<td bgcolor="rgb(238,238,238)" align="center" width="20%" colspan="2">
-				<font color="gray">²Ù×÷</font>
-				</td>
-				</tr>
-				<s:iterator value="#items">
-				<form action="updateCart" method="post"  onsubmit="return check(this)">
-				<tr>
-				<td>
-				<s:property value="value.book.bookname"/>
-				</td>
-				<td>
-				<s:property value="value.book.price"/>
-				</td>
-				<td>
-<input type="text" name="quantity" value="<s:property value="value.quantity"/>"size="4"/>
-<input type="hidden" name="bookid" value="<s:property value="value.book.bookid"/>"/>
-				</td>
-				
-				<td valign="middle">
-					<input type="submit" value="¸üÐÂ"/>
-				</form>	
-				
-				<td>
-			<form action="deleteBook.action">
-			<input type="hidden" name="bookid" value="<s:property value="value.book.bookid"/>"/>
-			<input type="submit" value="É¾³ý">
-			</form>
-			</td>
-			</tr>
-				</s:iterator>				
-			</table>
-			<hr/>
-		Ïû·Ñ½ð¶î£º<s:property value="#session.cart.totalPrice"/>Ôª
-		<a href="checkout.action"><img src="/bookstore/picture/count.gif"/></a>
-			</s:if>
-			<s:else>
-			¶Ô²»Æð£¡Äú»¹Ã»ÓÐÑ¡¹ºÍ¼Êé£¡
-			</s:else>
-			</div>
-		</div>
-	</div>
-	<jsp:include page="foot.jsp"/>
-</body>
+		<jsp:include page="foot.jsp" />
+	</body>
 </html>

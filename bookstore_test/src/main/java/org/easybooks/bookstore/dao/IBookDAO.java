@@ -5,11 +5,11 @@ import java.util.List;
 import org.easybooks.bookstore.vo.Book;
 
 public interface IBookDAO {
-	public List getBookbyCatalogid(Integer catalogid);
-	public List getBookbyCatalogidPaging(Integer catalogid,int currentPage,int pageSize);
-	public int getTotalbyCatalog(Integer catalogid);
-	public List getNewBook();
-	public List getRequiredBookbyHql(String hql);
+	public List<Book> getBookbycatalogId(Integer catalogId);
+	public List<Book> getBookbycatalogIdPaging(Integer catalogId,int currentPage,int pageSize);
+	public int getTotalbyCatalog(Integer catalogId);
+	public List<Book> getNewBook();
+	public List<Book> getRequiredBookbyHql(String hql);
 	public Book getBookbyId(Integer bookid);
 	
 }

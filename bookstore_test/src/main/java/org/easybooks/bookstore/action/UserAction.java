@@ -1,4 +1,5 @@
 package org.easybooks.bookstore.action;
+
 import java.util.Map;
 
 import org.easybooks.bookstore.service.IUserService;
@@ -6,33 +7,17 @@ import org.easybooks.bookstore.vo.User;
 import org.easybooks.bookstore.service.impl.UserService;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ActionContext;
+
 public class UserAction extends ActionSupport {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private User user;
 	protected IUserService userService;
-	private String message="";
-	
-	public String register() throws Exception{
-		userService.saveUser(user);
-		return SUCCESS;
-	}
-	public String execute() throws Exception{
-		User u=userService.validateUser(user.getUsername(),user.getPassword());
-		if(u!=null){
-			Map session=ActionContext.getContext().getSession();
-			session.put("user", u);
-			return SUCCESS;
-		}
-		else{
-			this.setMessage("ÓÃ»§Ãû»òÃÜÂë´íÎó£¬ÇëÖØĞÂµÇÂ¼");
-		}
-		return ERROR;
-		}
-	public String logout() throws Exception{
-		Map session=ActionContext.getContext().getSession();
-		session.remove("user");
-		return SUCCESS;
-	}
+	private String message = "";
+
 	public User getUser() {
 		return this.user;
 	}
@@ -48,6 +33,7 @@ public class UserAction extends ActionSupport {
 	public void setUserService(IUserService userService) {
 		this.userService = userService;
 	}
+
 	public String getMessage() {
 		return message;
 	}
@@ -55,4 +41,28 @@ public class UserAction extends ActionSupport {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+
+	public String register() throws Exception {
+		userService.saveUser(user);
+		return SUCCESS;
+	}
+
+	public String execute() throws Exception {
+		User u = userService.validateUser(user.getUserName(), user.getPassWord());
+		if (u != null) {
+			Map<String, Object> session = ActionContext.getContext().getSession();
+			session.put("user", u);
+			return SUCCESS;
+		} else {
+			this.setMessage("è´¦å·æˆ–å¯†ç è¾“å…¥é”™è¯¯ï¼Œç™»å½•å¤±è´¥ï¼");
+			return ERROR;
+		}
+	}
+
+	public String logout() throws Exception {
+		Map<String, Object> session = ActionContext.getContext().getSession();
+		session.remove("user");
+		return SUCCESS;
+	}
+
 }

@@ -1,7 +1,9 @@
 package org.easybooks.bookstore.service;
 
-import org.easybooks.bookstore.vo.Orders;
+import org.easybooks.bookstore.vo.Order;
 
 public interface IOrderService {
-	public Orders saveOrder(Orders order);
+	
+	public Order saveOrder(Order order);
+	
 }

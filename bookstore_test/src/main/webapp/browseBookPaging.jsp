@@ -1,50 +1,53 @@
-<%@ page contentType="text/html;charset=gb2312"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html>
-<head>
-	<title>Õ¯…œ ÈµÍ</title>
-	<link href="css/bookstore.css" rel="stylesheet" type="text/css"/>
-	<script type="text/javascript" src="js/checkQuantity.js"></script>
-</head>
-<body>
-		<jsp:include page="head.jsp"/>
+	<head>
+		<title>ÁΩë‰∏ä‰π¶Â∫ó</title>
+		<link href="css/bookstore.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="js/checkQuantity.js"></script>
+	</head>
+	<body>
+		<jsp:include page="head.jsp" />
 		<div class="content">
 			<div class="left">
 				<div class="list_box">
 					<div class="list_bk">
-						<s:action name="browseCatalog" executeResult="true"/>
+						<s:action name="browseCatalog" executeResult="true" />
 					</div>
 				</div>
 			</div>
 			<div class="right">
 				<div class="right_box">
 					<s:iterator value="#request['books']" var="book">
-					  <table width="600" border="0">
+						<table width="600" border="0">
 							<tr>
 								<td width="200" align="center">
-									<img src="/bookstore/picture/<s:property value="#book.picture"/>" width="100"/>
+									<img src="/bookstore/picture/<s:property value=" #book.picture" />" width="100"/>
 								</td>
 								<td valign="top" width="400">
 									<table>
 										<tr>
 											<td>
-								 È√˚:<s:property value="#book.bookname"/><br>
+												‰π¶Âêç:
+												<s:property value="#book.bookname" /><br>
 											</td>
 										</tr>
 										<tr>
 											<td>
-								º€∏Ò:<s:property value="#book.price"/>‘™
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<form action="addToCart.action" method="post" onsubmit="return check(this)">
-				 ˝¡ø:
-				<input type="text" name="quantity" value="0" size="4"/>
-				<input type="hidden" name="bookid" value="<s:property value="#book.bookid"/>">
-				<input type="image" name="submit" src="/bookstore/picture/buy.gif"/>
-			</form>
+												‰ª∑Ê†º:
+												<s:property value="#book.price" />ÂÖÉ
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												<form action="addToCart.action" method="post" onsubmit="return check(this)">
+													Êï∞Èáè:
+													<input type="text" name="quantity" value="0" size="4" />
+													<input type="hidden" name="bookid" value="<s:property value=" #book.bookid" />">
+													<input type="image" name="submit" src="/bookstore/picture/buy.gif" />
+												</form>
 											</td>
 										</tr>
 									</table>
@@ -57,26 +60,26 @@
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<s:set value="#request.pager" var="pager"/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<s:set value="#request.pager" var="pager" />
 					<s:if test="#pager.hasFirst">
 						<a href="browseBookPaging.action?currentPage=1">
-						 ◊“≥
+							È¶ñÈ°µ
 						</a>
 					</s:if>
 					<s:if test="#pager.hasPrevious">
-						<a		 href="browseBookPaging.action?currentPage=<s:property value="#pager.currentPage-1"/>">
-							…œ“ª“≥
+						<a href="browseBookPaging.action?currentPage=<s:property value=" #pager.currentPage-1" />">
+						‰∏ä‰∏ÄÈ°µ
 						</a>
 					</s:if>
 					<s:if test="#pager.hasNext">
-						<a		 href="browseBookPaging.action?currentPage=<s:property value="#pager.currentPage+1"/>">
-							œ¬“ª“≥
+						<a href="browseBookPaging.action?currentPage=<s:property value=" #pager.currentPage+1" />">
+						‰∏ã‰∏ÄÈ°µ
 						</a>
 					</s:if>
 					<s:if test="#pager.hasLast">
-						<a		 href="browseBookPaging.action?currentPage=<s:property value="#pager.totalPage"/>">
-							Œ≤“≥
+						<a href="browseBookPaging.action?currentPage=<s:property value=" #pager.totalPage" />">
+						Â∞æÈ°µ
 						</a>
 					</s:if>
 					<br>
@@ -86,10 +89,12 @@
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					µ± «∞ µ⁄ <s:property value="#pager.currentPage"/>“≥ £¨◊‹ π≤<s:property value="#pager.totalPage"/> “≥
+					ÂΩì Ââç Á¨¨
+					<s:property value="#pager.currentPage" />È°µ ÔºåÊÄª ÂÖ±
+					<s:property value="#pager.totalPage" /> È°µ
 				</div>
 			</div>
-		</div>	
-		<jsp:include page="foot.jsp"/>
-</body>
+		</div>
+		<jsp:include page="foot.jsp" />
+	</body>
 </html>

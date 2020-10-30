@@ -15,17 +15,17 @@ public class ShoppingAction extends ActionSupport{
 	private IBookService bookService;
 	private IOrderService orderService;
 	
-	//Ìí¼Óµ½¹ºÎï³µ
+	//ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï³µ
 	public String addToCart() throws Exception{
 		Book book=bookService.getBookbyId(bookid);
-		//´´½¨Orderitem¶ÔÏó ÉèÖÃÊôÐÔ:Book£¬quantity
-		Orderitem orderitem=new Orderitem();
+		//ï¿½ï¿½ï¿½ï¿½Orderitemï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:Bookï¿½ï¿½quantity
+		OrderItem orderitem=new OrderItem();
 		orderitem.setBook(book);
 		orderitem.setQuantity(quantity);
 		Map session=ActionContext.getContext().getSession();
 		Cart cart=(Cart)session.get("cart");
-		//ÅÐ¶Ï¹ºÎï³µÊÇ·ñ´æÔÚ£¬Èç¹û²»´æÔÚ£¬Ôò´´½¨Ò»¸ö¹ºÎï³µ¡£
-		//Èç¹û´æÔÚ£¬Ìí¼ÓÍ¼Êéµ½¹ºÎï³µ
+		//ï¿½Ð¶Ï¹ï¿½ï¿½ï³µï¿½Ç·ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ò´´½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï³µï¿½ï¿½
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½Í¼ï¿½éµ½ï¿½ï¿½ï¿½ï³µ
 		if(cart==null){
 			cart=new Cart();
 		}
@@ -41,28 +41,28 @@ public class ShoppingAction extends ActionSupport{
 		session.put("cart", cart);
 		return SUCCESS;
 	}
-	//½áÕËÏÂ¶©µ¥
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Â¶ï¿½ï¿½ï¿½
 	public String checkout()throws Exception{
 		Map session=ActionContext.getContext().getSession();
 		User user=(User)session.get("user");
 		Cart cart=(Cart)session.get("cart");
 		if(user==null||cart==null)
 			return ActionSupport.ERROR;
-		//×¼±¸¶©µ¥¶ÔÏóorder
-		Orders order=new Orders();
-		order.setOrderdate(new Date());
+		//×¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½order
+		Order order=new Order();
+		order.setOrderDate(new Date());
 		order.setUser(user);
-		//±éÀú¹ºÎï³µÖÐµÄÍ¼Êé£¬Éú³É¶©µ¥ÏîÄ¿£¬½øÒ»²½×éÖ¯³É¶©µ¥
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï³µï¿½Ðµï¿½Í¼ï¿½é£¬ï¿½ï¿½ï¿½É¶ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ö¯ï¿½É¶ï¿½ï¿½ï¿½
 		for(Iterator it=cart.getItems().values().iterator();it.hasNext();){
-			//µÃµ½¹ºÎï³µÖÐµÄËùÓÐorderitem£¬½«¼¯ºÏÖÐµÄËùÓÐÔªËØÌî³äµ½µü´úÆ÷¶ÔÏóÖÐ
-			Orderitem orderitem=(Orderitem)it.next();
-			orderitem.setOrders(order);
-			order.getOrderitems().add(orderitem);
+			//ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï³µï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½orderitemï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½äµ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			OrderItem orderitem=(OrderItem)it.next();
+			orderitem.setOrder(order);
+			order.getOrderItems();
 		}
-		orderService.saveOrder(order);//±£´æ¶©µ¥
+		orderService.saveOrder(order);//ï¿½ï¿½ï¿½æ¶©ï¿½ï¿½
 		Map request=(Map)ActionContext.getContext().get("request");
 		request.put("order",order);
-		session.remove("cart");//Çå³ý¹ºÎï³µ
+		session.remove("cart");//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï³µ
 		return SUCCESS;
 		}
 	

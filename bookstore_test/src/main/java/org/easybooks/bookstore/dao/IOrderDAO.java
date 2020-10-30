@@ -1,7 +1,7 @@
 package org.easybooks.bookstore.dao;
 
-import org.easybooks.bookstore.vo.Orders;
+import org.easybooks.bookstore.vo.Order;
 
 public interface IOrderDAO {
-	public Orders saveOrder(Orders order);
+	public Order saveOrder(Order order);
 }

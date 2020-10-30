@@ -2,14 +2,14 @@ package org.easybooks.bookstore.service.impl;
 
 import org.easybooks.bookstore.dao.IOrderDAO;
 import org.easybooks.bookstore.service.IOrderService;
-import org.easybooks.bookstore.vo.Orders;
+import org.easybooks.bookstore.vo.Order;
 public class OrderService implements IOrderService{
 	private IOrderDAO orderDAO;
 	public void setOrderDAO(IOrderDAO orderDAO){
 		this.orderDAO=orderDAO;
 	}
-	//±£´æ¹ºÎïÐÅÏ¢(±£´æ¶©µ¥)
-	public Orders saveOrder(Orders order) {
+	//ï¿½ï¿½ï¿½æ¹ºï¿½ï¿½ï¿½ï¿½Ï¢(ï¿½ï¿½ï¿½æ¶©ï¿½ï¿½)
+	public Order saveOrder(Order order) {
 		return orderDAO.saveOrder(order);
 	}
 }

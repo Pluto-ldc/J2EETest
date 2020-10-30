@@ -8,18 +8,19 @@ import org.easybooks.bookstore.vo.Book;
 
 public class BookService implements IBookService {
 	private IBookDAO bookDAO;
-	
-	public List getBookbyCatalogid(Integer catalogid) {
-		return bookDAO.getBookbyCatalogid(catalogid);
+
+	public List<Book> getBookbyCatalogid(Integer catalogid) {
+		return bookDAO.getBookbycatalogId(catalogid);
 	}
-	
-	public List getBookbyCatalogidPaging(Integer catalogid, int currentPage,int pageSize) {
-		return bookDAO.getBookbyCatalogidPaging(catalogid, currentPage, pageSize);
+
+	public List<Book> getBookbyCatalogidPaging(Integer catalogid, int currentPage, int pageSize) {
+		return bookDAO.getBookbycatalogIdPaging(catalogid, currentPage, pageSize);
 	}
-	
+
 	public int getTotalbyCatalog(Integer catalogid) {
 		return bookDAO.getTotalbyCatalog(catalogid);
 	}
+
 	public IBookDAO getBookDAO() {
 		return bookDAO;
 	}
@@ -27,17 +28,17 @@ public class BookService implements IBookService {
 	public void setBookDAO(IBookDAO bookDAO) {
 		this.bookDAO = bookDAO;
 	}
-	
-	public List getNewBook() {
+
+	public List<Book> getNewBook() {
 		return bookDAO.getNewBook();
 	}
-	//ËÑË÷Í¼Êé
-	public List getRequiredBookbyHql(String hql) {
+
+	public List<Book> getRequiredBookbyHql(String hql) {
 		return bookDAO.getRequiredBookbyHql(hql);
 	}
 
 	public Book getBookbyId(Integer bookid) {
 		return bookDAO.getBookbyId(bookid);
 	}
-	
+
 }

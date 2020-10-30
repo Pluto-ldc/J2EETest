@@ -4,18 +4,22 @@ import java.util.List;
 
 import org.easybooks.bookstore.dao.ICatalogDAO;
 import org.easybooks.bookstore.service.ICatalogService;
+import org.easybooks.bookstore.vo.Catalog;
 
-public class CatalogService implements ICatalogService{
-	
-	private ICatalogDAO catalogDAO;//用于调用dao层的方法
-	//获取所有图书类别
-	public  List getAllCatalogs(){
+public class CatalogService implements ICatalogService {
+
+	private ICatalogDAO catalogDAO;
+
+	public List<Catalog> getAllCatalogs() {
+		
 		return catalogDAO.getAllCatalogs();
 	}
-	public  ICatalogDAO getCatalogs(){
+
+	public ICatalogDAO getCatalogs() {
 		return catalogDAO;
 	}
-	public void setCatalogDAO(ICatalogDAO catalogDAO){
-		this.catalogDAO=catalogDAO;
+
+	public void setCatalogDAO(ICatalogDAO catalogDAO) {
+		this.catalogDAO = catalogDAO;
 	}
 }

@@ -1,62 +1,65 @@
-<%@ page contentType="text/html;charset=gb2312"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html>
-<head>
-	<title>ÍøÉÏÊéµê</title>
-	<link href="css/bookstore.css" rel="stylesheet" type="text/css"/>
-</head>
-<body>
-		<jsp:include page="head.jsp"/>
+	<head>
+		<title>ç½‘ä¸Šä¹¦åº—</title>
+		<link href="css/bookstore.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<jsp:include page="head.jsp" />
 		<div class="content">
 			<div class="left">
 				<div class="list_box">
 					<div class="list_bk">
-						<s:action name="browseCatalog" executeResult="true"/>
+						<s:action name="browseCatalog" executeResult="true" />
 					</div>
 				</div>
 			</div>
 			<div class="right">
 				<div class="right_box">
-				<s:set var="books" value="#request.books"/>
-				<s:if test="#books.size!=0">
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<font color="blue">ËùÓĞ·ûºÏÌõ¼şµÄÍ¼Êé</font><br>
-					<s:iterator value="#books"var="book">
-						<table width="600" border="0">
-							<tr>
-								<td width="200" align="center">
-				<img src="/bookstore/picture/<s:property value="#book.picture"/>"width="100">
-								</td>
-								<td valign="top" width="400">
-									<table>
-										<tr>
-											<td>
-									ÊéÃû:<s:property value="#book.bookname"/><br>
-											</td>
-										</tr>
-										<tr>
-											<td>
-											¼Û¸ñ:<s:property value="#book.price"/>Ôª
+					<s:set var="books" value="#request.books" />
+					<s:if test="#books.size!=0">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<font color="blue">æ‰€æœ‰ç¬¦åˆæ¡ä»¶çš„å›¾ä¹¦</font><br>
+						<s:iterator value="#books" var="book">
+							<table width="600" border="0">
+								<tr>
+									<td width="200" align="center">
+										<img src="/bookstore/picture/<s:property value=" #book.picture" />"width="100">
+									</td>
+									<td valign="top" width="400">
+										<table>
+											<tr>
+												<td>
+													ä¹¦å:
+													<s:property value="#book.bookname" /><br>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													ä»·æ ¼:
+													<s:property value="#book.price" />å…ƒ
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											</td>
-										</tr>
-									</table>
-								</td>
-							</tr>
-						</table>
-					</s:iterator>
-				</s:if>
-				<s:else>
-					<h3>¶Ô²»Æğ£¬Ã»ÓĞºÏÊÊµÄÍ¼Êé£¡</h3>
-				</s:else>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+						</s:iterator>
+					</s:if>
+					<s:else>
+						<h3>å¯¹ä¸èµ·ï¼Œæ²¡æœ‰åˆé€‚çš„å›¾ä¹¦ï¼</h3>
+					</s:else>
+				</div>
 			</div>
 		</div>
-	</div>	
-	<jsp:include page="foot.jsp"/>
-</body>
+		<jsp:include page="foot.jsp" />
+	</body>
 </html>

@@ -4,64 +4,64 @@ import java.util.*;
 import org.easybooks.bookstore.vo.*;
 
 public class Cart {
-	//ÊôÐÔ³ÉÔ±:bookid->orderitem
-	protected Map<Integer,Orderitem> items;
+	//ï¿½ï¿½ï¿½Ô³ï¿½Ô±:bookid->OrderItem
+	protected Map<Integer,OrderItem> items;
 	
 	public Cart(){
 		if(items==null)
-			items=new HashMap<Integer,Orderitem>();
+			items=new HashMap<Integer,OrderItem>();
 	}
 	
-	//Ìí¼ÓÍ¼Êéµ½¹ºÎï³µ
-	public void addBook(Integer bookid,Orderitem orderitem){
-		//Èç¹ûÌí¼ÓµÄÍ¼Êéµ½¹ºÎï³µÖÐ²»´æÔÚ£¬ÔòÌí¼ÓÍ¼Êéµ½¹ºÎï³µ
-		//Èç¹ûÒÑ¾­´æÔÚ£¬Ôò¸üÐÂÍ¼ÊéµÄÊýÁ¿
+	//ï¿½ï¿½ï¿½Í¼ï¿½éµ½ï¿½ï¿½ï¿½ï³µ
+	public void addBook(Integer bookid,OrderItem OrderItem){
+		//ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½Í¼ï¿½éµ½ï¿½ï¿½ï¿½ï³µï¿½Ð²ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½éµ½ï¿½ï¿½ï¿½ï³µ
+		//ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		if(items.containsKey(bookid)){
-			Orderitem _orderitem=items.get(bookid);//µÃµ½¹ºÎï³µÖÐ¸ÃÍ¼ÊéµÄorderitem
-			//¸üÐÂºó¶©µ¥µÄÊýÁ¿=Ô­¶©µ¥µÄÊýÁ¿+ÐÂÔö¶©µ¥µÄÊýÁ¿
-			_orderitem.setQuantity(orderitem.getQuantity()+_orderitem.getQuantity());
-			items.put(bookid,_orderitem);
+			OrderItem _OrderItem=items.get(bookid);//ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï³µï¿½Ð¸ï¿½Í¼ï¿½ï¿½ï¿½OrderItem
+			//ï¿½ï¿½ï¿½Âºó¶©µï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½=Ô­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			_OrderItem.setQuantity(OrderItem.getQuantity()+_OrderItem.getQuantity());
+			items.put(bookid,_OrderItem);
 		}
 		else{
-			items.put(bookid,orderitem);
+			items.put(bookid,OrderItem);
 		}
 	}
 	
 	public void updateCart(Integer bookid, int quantity) {
-		Orderitem orderitem=items.get(bookid);
-		orderitem.setQuantity(quantity);
-		items.put(bookid,orderitem);
+		OrderItem OrderItem=items.get(bookid);
+		OrderItem.setQuantity(quantity);
+		items.put(bookid,OrderItem);
 			
 	}
-	//¼ÆËã¹ºÎï³µÖÐÍ¼ÊéµÄ×Ü¼Û¸ñ
+	//ï¿½ï¿½ï¿½ã¹ºï¿½ï³µï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½Ü¼Û¸ï¿½
 	public int getTotalPrice(){
 //		int total=0;
-////		Collection coll=items.values();//»ñÈ¡MapÖÐËùÓÐµÄvalue
+////		Collection coll=items.values();//ï¿½ï¿½È¡Mapï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½value
 ////		Iterator ita=coll.iterator();
 //		while(items.values().iterator().hasNext()){
-//			Orderitem orderitem=(Orderitem)items.values().iterator().next();
-//			int price=orderitem.getBook().getPrice();
-//			total+=orderitem.getQuantity()*price;
+//			OrderItem OrderItem=(OrderItem)items.values().iterator().next();
+//			int price=OrderItem.getBook().getPrice();
+//			total+=OrderItem.getQuantity()*price;
 //		}
 //		return total;
 //	}
 	
 	
 		int totalPrice=0;
-		for(Iterator it=items.values().iterator();it.hasNext();){
-			Orderitem orderitem=(Orderitem)it.next();
-			Book book=orderitem.getBook();
-			int quantity=orderitem.getQuantity();
+		for(Iterator<OrderItem> it=items.values().iterator();it.hasNext();){
+			OrderItem OrderItem=(OrderItem)it.next();
+			Book book=OrderItem.getBook();
+			int quantity=OrderItem.getQuantity();
 			totalPrice+=book.getPrice()*quantity;
 		}
 		return totalPrice;
 	}
 	
 	
-	public Map<Integer, Orderitem> getItems() {
+	public Map<Integer, OrderItem> getItems() {
 		return items;
 	}
-	public void setItems(Map<Integer, Orderitem> items) {
+	public void setItems(Map<Integer, OrderItem> items) {
 		this.items = items;
 	}
 

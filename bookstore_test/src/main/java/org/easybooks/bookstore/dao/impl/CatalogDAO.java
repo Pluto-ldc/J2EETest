@@ -4,14 +4,16 @@ import java.util.List;
 
 import org.easybooks.bookstore.dao.BaseDAO;
 import org.easybooks.bookstore.dao.ICatalogDAO;
-import org.hibernate.Query;
-import org.hibernate.*;
+import org.easybooks.bookstore.vo.Catalog;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 
-public class CatalogDAO extends BaseDAO implements ICatalogDAO{
-	public  List getAllCatalogs(){
-		Session session=getSession();
-		Query query=session.createQuery("from Catalog c");
-		List catalogs=query.list();
+public class CatalogDAO extends BaseDAO implements ICatalogDAO {
+	
+	public List<Catalog> getAllCatalogs() {
+		Session session = getSession();
+		Query<Catalog> query = session.createQuery("from Catalog c", Catalog.class);
+		List<Catalog> catalogs = query.getResultList();
 		session.close();
 		return catalogs;
 	}
