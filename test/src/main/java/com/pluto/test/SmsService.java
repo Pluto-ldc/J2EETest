@@ -8,13 +8,17 @@ public class SmsService implements ISmsService {
 	private SmsUtil smsUtil;
 
 	@Override
-	public Boolean loginSms( String phoneNum,String randomNum) {
-		smsUtil=new SmsUtil();
-		Boolean isSuccess = null;
+	public Boolean loginSms(String phoneNum, String randomNum) {
+		smsUtil = new SmsUtil();
+		Boolean isSuccess = false;
 		try {
 			Map<String, Object> reqMap = smsUtil.sendSmS(SmsUtil.LOGIN, Arrays.asList(phoneNum),
 					Arrays.asList(randomNum));
-			isSuccess = Integer.valueOf(reqMap.get("Fee").toString()) == 1;
+			if (reqMap.get("Exception") == null) {
+				isSuccess = Integer.valueOf(reqMap.get("Fee").toString()) == 1;
+			} else {
+				System.out.println(reqMap);
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

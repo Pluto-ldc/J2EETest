@@ -17,6 +17,8 @@ public class User {
 	private String email;
 	
 	private String mobile;
+	
+	private Integer isAdmin;
 
 	public Integer getId() {
 		return id;
@@ -82,10 +84,19 @@ public class User {
 		this.mobile = mobile;
 	}
 
+
+	public Integer getIsAdmin() {
+		return isAdmin;
+	}
+
+	public void setIsAdmin(Integer isAdmin) {
+		this.isAdmin = isAdmin;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", userName=" + userName + ", passWord=" + passWord + ", money=" + money + ", name="
-				+ name + ", sex=" + sex + ", email=" + email + ", mobile=" + mobile + "]";
+				+ name + ", sex=" + sex + ", email=" + email + ", mobile=" + mobile + ", isAdmin=" + isAdmin + "]";
 	}
 	
 	

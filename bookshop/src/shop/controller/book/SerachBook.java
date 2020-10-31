@@ -2,6 +2,7 @@ package shop.controller.book;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,36 +14,25 @@ import shop.domain.Book;
 import shop.model.BookModel;
 
 /**
- * 删除图书
- * @author pluto
- *
+ * Servlet implementation class SerachBook
  */
-@WebServlet("/DeleteBookServlet")
-public class DeleteBookServlet extends HttpServlet {
+@WebServlet("/SerachBook")
+public class SerachBook extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Integer bookId = Integer.valueOf(request.getParameter("bookId"));
-		Book book=new Book();
-		book.setId(bookId);
-		BookModel bookModel=new BookModel();
+		String keyWord=request.getParameter("keyWord");
 		try {
-			bookModel.deleteBook(book);
-			response.sendRedirect(request.getContextPath() + "/FindAllBooksServlet");
+			List<Book> books=new BookModel().findByKeyWord(keyWord);
+			request.getSession().setAttribute("allBooks",books);
+			response.sendRedirect(request.getContextPath() + "/PageBook");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

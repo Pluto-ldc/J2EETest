@@ -60,4 +60,13 @@ public class BookModel {
 			return false;
 		}
 	}
+
+	public List<Book> findByKeyWord(String keyWord) throws SQLException {
+		keyWord = "%" + keyWord + "%";
+		String sql = "select * from book where bookName like ? or bookType like ? or bookNote like ? or author like ? ";
+		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
+		List<Book> bookList = queryRunner.query(sql, new BeanListHandler<Book>(Book.class), keyWord, keyWord, keyWord,
+				keyWord);
+		return bookList;
+	}
 }

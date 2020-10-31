@@ -27,6 +27,7 @@ public class FindAllBooksServlet extends HttpServlet {
 		try {
 			List<Book> books=bookModel.findAll();
 			request.getSession().setAttribute("allBooks",books);
+			response.sendRedirect(request.getContextPath() + "/PageBook");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

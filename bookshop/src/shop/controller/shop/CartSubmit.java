@@ -1,7 +1,6 @@
 package shop.controller.shop;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -12,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import shop.domain.Cart;
 import shop.domain.Transaction;
 import shop.domain.User;
 
@@ -33,16 +33,23 @@ public class CartSubmit extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		// 减去客户价格，加上管理员价格
+		// 计算总价
+		List<Cart> cartList = (List<Cart>) session.getAttribute("cartList");
+		int countPrice = 0;
+		for (Cart cart : cartList) {
+			int price = cart.getBook().getPrice();
+			countPrice += price;
+		}
+		// 减去客户总价钱数，加上管理员总价钱数
 		User user = (User) session.getAttribute("user");
-		user.getId();
+		Integer userId = user.getId();
 
 		// 订单完成
 		List<Transaction> transactionList=(List<Transaction>) session.getAttribute("transactionList");
 		Transaction transaction=transactionList.get(transactionList.size()-1);
 		transaction.setStatus(true);
 		Date nowDate=new Date();
-		transaction.setDateString(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(nowDate));
+		transaction.setDateString(nowDate.toLocaleString());
 		transactionList.set(transactionList.size()-1, transaction);
 		session.setAttribute("transactionList", transactionList);
 		session.removeAttribute("cartList");

@@ -25,8 +25,8 @@ public class SmsUtil {
 	public static final String GENERAL = "747111";
 
 	private final Charset UTF8 = StandardCharsets.UTF_8;
-	private final String SECRET_ID = "¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥";
-	private final String SECRET_KEY = "¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥";
+	private final String SECRET_ID = "AKIDrzrSm2VatulNillqSnrjIabolSs1lkGV";
+	private final String SECRET_KEY = "ZrLYUO1NeFl23nJYVHsDPMn0xczDUUHw";
 	private final String service = "sms";
 	private final String host = "sms.tencentcloudapi.com";
 	private final String algorithm = "TC3-HMAC-SHA256";
@@ -116,7 +116,12 @@ public class SmsUtil {
 				.header("X-TC-Language", "zh-CN").header("Content-Type", "application/json")
 				.header("Authorization", authorization).body(payloadJsonObject.toString()).execute().body();
 		JSONObject reqJsonObject = new JSONObject(response);
-		JSONObject jsonObject = reqJsonObject.getJSONObject("Response").getJSONArray("SendStatusSet").getJSONObject(0);
+		JSONObject jsonObject = null;
+		try {
+			jsonObject= reqJsonObject.getJSONObject("Response").getJSONArray("SendStatusSet").getJSONObject(0);
+		} catch (NullPointerException e) {
+			jsonObject=reqJsonObject.accumulate("Exception", e.toString());
+		}
 		return jsonObject;
 	}
 
