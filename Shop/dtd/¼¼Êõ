@@ -1,0 +1,69 @@
+1. Java 锁几种
+2. String StringBuilder
+3. Integer int
+4. Session 
+	url重写；
+	jwt---json 令牌。---redis()
+	session内存占用。
+5. 数据库：
+	事务
+		本地事务
+		分布式事务
+		分布式锁。
+		只读事务。
+	100w条数----提高速度。
+	① kafka   redis
+	② 代码优化
+		批处理
+		提交事务
+		批量发送。
+6. 优化
+	① 找出查询慢的sql---慢查询。
+	② 查看执行计划。
+	③ 索引创建
+		多种。 primary key  unique
+	④ 哪个列需要加索引：
+		条件
+		where
+		on
+	⑤ 缓存---本地 db server 分布式缓存  
+		安全  一致性  淘汰策略   击穿  穿透
+	innodb--引擎
+	myisam--引擎
+	⑥ SQL优化
+	常识：
+		
+		
+	
+7. web
+	作用域---思想
+	filter---拦截器 aop
+	
+	
+	原理掌握
+	① servlet生命周期
+	② jsp执行原理
+	③ jsp封装
+	④ servlet优化
+	⑤ tomcat架构模型   线程池优化  并发参数  jvm参数。
+	
+8. 技术
+	spring
+	springmvc
+	springboot
+	mybatis
+	jpa
+	ehcache
+	redis
+	es
+	hbase
+	dubbo
+	springcloud
+	nginx
+	mycat
+	linux
+	
+
+		
+
+	

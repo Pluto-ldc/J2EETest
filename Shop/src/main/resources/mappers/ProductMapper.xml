@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baizhi.dao.ProductDao">
+
+	<select id="selectAll" resultType="com.baizhi.entity.Product">
+		SELECT * FROM t_product ORDER BY addDate DESC
+	</select>
+	
+	<select id="needAdd" resultType="com.baizhi.entity.Product">
+		SELECT * FROM t_product ORDER BY sum LIMIT 5
+	</select>
+	
+	<select id="saleTop" resultType="com.baizhi.entity.Product">
+		SELECT * FROM t_product ORDER BY visitCount DESC LIMIT 5
+	</select>
+
+	<select id="selectById" resultType="com.baizhi.entity.Product">
+		SELECT * FROM t_product WHERE
+		id = #{id}
+	</select>
+
+	<insert id="insert">
+		INSERT INTO `baizhi`.`t_product`(`name`, `price`,
+		`sum`, `visitCount`, `status`, `addDate`, `description`, `pic_url`)
+		VALUES
+		(#{name},#{price},#{sum},#{visitCount},#{status},SYSDATE(),#{description},#{pic_url});
+	</insert>
+
+	<delete id="delete">
+		DELETE FROM t_product WHERE id = #{id}
+	</delete>
+	
+	<update id="changeStatus">
+		UPDATE `baizhi`.`t_product` SET `status` = #{status} WHERE `id` = #{id}
+	</update>
+	
+	<update id="updateProduct">
+		UPDATE `baizhi`.`t_product` SET `name` = #{name}, `price` = #{price}, `sum` = #{sum},`description` = #{description} WHERE `id` = #{id}
+	</update>
+	
+	<delete id="deleteBatch">
+		DELETE FROM t_product WHERE id IN 
+		<foreach collection="ids" item="id" open="(" close=")" separator=",">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

@@ -3,11 +3,15 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>成功页面</title>
-</head>
-<body>
-	<h1><s:property value="user.userName"/>,您好!欢迎光临叮当书店.</h1>
-</body>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+		<title>成功页面</title>
+	</head>
+	<body>
+		<h1 class="display-4">
+			<s:property value="user.userName" />,您好!欢迎光临叮当书店.
+		</h1>
+	</body>
 </html>
