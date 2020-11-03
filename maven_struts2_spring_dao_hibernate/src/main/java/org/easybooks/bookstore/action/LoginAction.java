@@ -22,18 +22,13 @@ public class LoginAction extends ActionSupport {
 	}
 
 	public String execute() throws Exception {
-		boolean validated = false;
-		ApplicationContext applicationContext = new ClassPathXmlApplicationContext(
-				new String[] { "applicationContext.xml" });
+		ApplicationContext applicationContext = new ClassPathXmlApplicationContext( new String[] { "applicationContext.xml" });
 		IUserDAO userDAO = (UserDAO) applicationContext.getBean("UserDAO");
 		User user = userDAO.validate(this.user);
 		((ConfigurableApplicationContext)applicationContext).close();
 		if (user != null) {
-			validated = true;
-		}
-		if (validated) {
 			return SUCCESS;
-		} else {
+		}else {
 			return ERROR;
 		}
 	}

@@ -6,7 +6,6 @@
 	<artifactId>maven_struts2_spring_dao_hibernate</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-
 	<properties>
 		<!--使用utf-8编码 -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -86,6 +85,13 @@
 			<artifactId>commons-dbcp2</artifactId>
 			<version>2.8.0</version>
 		</dependency>
-		
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+			<version>2.3.5.RELEASE</version>
+		</dependency>
+
 	</dependencies>
 </project>
