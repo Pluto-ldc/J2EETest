@@ -17,7 +17,7 @@
 						<p> <input type="password" name="user.passWord" class="form-control" placeholder="Password" required></p>
 						<p>
 							<button class="btn btn-lg btn-success btn-block" type="submit">Register</button><br>
-							<button class="btn btn-lg btn-primary btn-block" type="button">Back To Login</button>
+							<a href="./login.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Back To Login</button></a>
 						</p>
 					</form>
 				</div>

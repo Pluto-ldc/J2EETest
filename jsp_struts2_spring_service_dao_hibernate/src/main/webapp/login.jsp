@@ -18,7 +18,10 @@
 							 autofocus></p>
 						<p> <input type="password" name="user.passWord" class="form-control" placeholder="Password"
 							 required></p>
-						<p><button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button></p>
+						<p>
+							<button class="btn btn-lg btn-success btn-block" type="submit">Sign in</button><br>
+							<a href="./register.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">To Register</button></a>
+						</p>
 					</form>
 				</div>
 			</div>
