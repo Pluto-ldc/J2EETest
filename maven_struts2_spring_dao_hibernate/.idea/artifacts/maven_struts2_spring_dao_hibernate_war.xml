@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="maven_struts2_spring_dao_hibernate:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>maven_struts2_spring_dao_hibernate</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="maven_struts2_spring_dao_hibernate-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="maven_struts2_spring_dao_hibernate:war exploded" />
+    </root>
+  </artifact>
+</component>

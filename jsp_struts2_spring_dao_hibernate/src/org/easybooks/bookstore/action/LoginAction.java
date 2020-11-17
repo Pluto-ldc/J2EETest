@@ -1,7 +1,6 @@
 package org.easybooks.bookstore.action;
 
 import org.easybooks.bookstore.dao.IUserDAO;
-import org.easybooks.bookstore.dao.impl.UserDAO;
 import org.easybooks.bookstore.vo.User;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -25,7 +24,7 @@ public class LoginAction extends ActionSupport {
 		boolean validated = false;
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext(
 				new String[] { "applicationContext.xml" });
-		IUserDAO userDAO = (UserDAO) applicationContext.getBean("UserDAO");
+		IUserDAO userDAO = (IUserDAO) applicationContext.getBean("UserDAO");
 		User user = userDAO.validate(this.user);
 		((ConfigurableApplicationContext)applicationContext).close();
 		if (user != null) {

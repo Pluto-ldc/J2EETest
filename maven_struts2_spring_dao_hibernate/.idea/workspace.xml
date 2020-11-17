@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="38dff320-a7e8-494d-9c85-b4543139cea2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Shop/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Shop/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bookstore_test/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../bookstore_test/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jsp_struts2_spring_service_dao_hibernate/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../jsp_struts2_spring_service_dao_hibernate/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jsp_struts2_spring_service_dao_hibernate/src/main/java/applicationContext.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jsp_struts2_spring_service_dao_hibernate/src/main/java/struts.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jsp_struts2_spring_service_dao_hibernate/src/main/java/struts.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/src/main/java/com/pluto/test/SmsUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../test/src/main/java/com/pluto/test/SmsUtil.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1k12hb6gSmb1i3XvtpwKWhidMFk" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="38dff320-a7e8-494d-9c85-b4543139cea2" name="Default Changelist" comment="" />
+      <created>1604853896873</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1604853896873</updated>
+      <workItem from="1604853906189" duration="21000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+</project>

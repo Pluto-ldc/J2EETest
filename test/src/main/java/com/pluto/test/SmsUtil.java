@@ -25,8 +25,8 @@ public class SmsUtil {
 	public static final String GENERAL = "747111";
 
 	private final Charset UTF8 = StandardCharsets.UTF_8;
-	private final String SECRET_ID = "AKIDrzrSm2VatulNillqSnrjIabolSs1lkGV";
-	private final String SECRET_KEY = "ZrLYUO1NeFl23nJYVHsDPMn0xczDUUHw";
+	private final String SECRET_ID = "AKIDvaz8TYvahY7PSKaHHUEnK7evtiCSnCoD";
+	private final String SECRET_KEY = "HI1g8JDqFPHsPecKvIOjoqbBUWKBl5L9";
 	private final String service = "sms";
 	private final String host = "sms.tencentcloudapi.com";
 	private final String algorithm = "TC3-HMAC-SHA256";
