@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 2020年10月30日 下午3:55:51 by Hibernate Tools 5.4.21.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true"
+	default-access="property" default-cascade="none" default-lazy="true">
+	<class catalog="bookStore" dynamic-insert="false"
+		dynamic-update="false" mutable="true"
+		name="org.easybooks.bookstore.vo.Order" optimistic-lock="version"
+		polymorphism="implicit" select-before-update="false" table="order">
+		<id name="orderId" type="java.lang.Integer">
+			<column name="orderId" />
+			<generator class="identity" />
+		</id>
+		<many-to-one class="org.easybooks.bookstore.vo.User"
+			embed-xml="true" fetch="select" insert="true" name="user"
+			not-found="exception" optimistic-lock="true" unique="false"
+			update="true">
+			<column name="userId" not-null="true" />
+		</many-to-one>
+		<property generated="never" lazy="false" name="orderDate"
+			optimistic-lock="true" type="timestamp" unique="false">
+			<column length="19" name="orderDate" not-null="true" />
+		</property>
+		<set embed-xml="true" fetch="select" inverse="true" lazy="true"
+			mutable="true" name="orderItems" optimistic-lock="true"
+			sort="unsorted" table="orderItem">
+			<key on-delete="noaction">
+				<column name="orderId" not-null="true" />
+			</key>
+			<one-to-many class="org.easybooks.bookstore.vo.OrderItem"
+				embed-xml="true" not-found="exception" />
+		</set>
+	</class>
+</hibernate-mapping>

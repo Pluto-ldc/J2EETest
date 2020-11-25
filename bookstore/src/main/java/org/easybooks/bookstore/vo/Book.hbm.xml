@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 2020年10月30日 下午3:55:51 by Hibernate Tools 5.4.21.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true"
+	default-access="property" default-cascade="none" default-lazy="true">
+	<class catalog="bookStore" dynamic-insert="false"
+		dynamic-update="false" mutable="true"
+		name="org.easybooks.bookstore.vo.Book" optimistic-lock="version"
+		polymorphism="implicit" select-before-update="false" table="book">
+		<id name="bookId" type="java.lang.Integer">
+			<column name="bookId" />
+			<generator class="identity" />
+		</id>
+		<many-to-one class="org.easybooks.bookstore.vo.Catalog"
+			embed-xml="true" fetch="select" insert="true" name="catalog"
+			not-found="exception" optimistic-lock="true" unique="false"
+			update="true">
+			<column name="catalogId" not-null="true" />
+		</many-to-one>
+		<property generated="never" lazy="false" name="bookName"
+			optimistic-lock="true" type="string" unique="false">
+			<column length="20" name="bookName" not-null="true" />
+		</property>
+		<property generated="never" lazy="false" name="price"
+			optimistic-lock="true" type="int" unique="false">
+			<column name="price" not-null="true" />
+		</property>
+		<property generated="never" lazy="false" name="picture"
+			optimistic-lock="true" type="string" unique="false">
+			<column length="100" name="picture" not-null="true" />
+		</property>
+		<set embed-xml="true" fetch="select" inverse="true" lazy="true"
+			mutable="true" name="orderItems" optimistic-lock="true"
+			sort="unsorted" table="orderItem">
+			<key on-delete="noaction">
+				<column name="bookId" not-null="true" />
+			</key>
+			<one-to-many class="org.easybooks.bookstore.vo.OrderItem"
+				embed-xml="true" not-found="exception" />
+		</set>
+	</class>
+</hibernate-mapping>

@@ -30,9 +30,14 @@ public class UserDAO extends BaseDAO implements IUserDAO {
 	@Override
 	public Integer saveUser(User user) {
 		Session session = getSession();
-		Transaction tx = session.beginTransaction();
-		Integer code = (Integer) session.save(user);
-		tx.commit();
+		Integer code = null;
+		String hql = "from User u where u.userName = ?0";
+		Query<User> query = session.createQuery(hql, User.class).setParameter(0, user.getUserName()).setMaxResults(1);
+		if (query.getResultList().size() == 0) {
+			Transaction tx = session.beginTransaction();
+			code = (Integer) session.save(user);
+			tx.commit();
+		}
 		session.close();
 		return code;
 	}

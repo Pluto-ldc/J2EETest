@@ -6,11 +6,11 @@
     <package name="default" extends="struts-default">
         <action name="login" class="loginAction">
             <result name="success">/welcome.jsp</result>
-            <result name="error" type="redirect">/error.jsp</result>
+            <result name="error">/login.jsp</result>
         </action>
         <action name="register" class="loginAction" method="register">
-            <result name="success">/welcome.jsp</result>
-            <result name="error" type="redirect">/error.jsp</result>
+            <result name="success">/login.jsp</result>
+            <result name="error">/register.jsp</result>
         </action>
     </package>
 </struts>

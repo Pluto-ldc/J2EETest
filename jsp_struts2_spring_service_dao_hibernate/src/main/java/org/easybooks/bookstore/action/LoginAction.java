@@ -2,7 +2,10 @@ package org.easybooks.bookstore.action;
 
 import org.easybooks.bookstore.service.IUserService;
 import org.easybooks.bookstore.vo.User;
+
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.util.ValueStack;
 
 @SuppressWarnings("serial")
 public class LoginAction extends ActionSupport {
@@ -29,11 +32,23 @@ public class LoginAction extends ActionSupport {
 
 	public String execute() {
 		User user = userService.validateUser(this.user);
-		return user == null ? ERROR : SUCCESS;
+		if (user == null) {
+			ActionContext.getContext().getValueStack().set("msg", "用户名或密码错误！");
+			return ERROR;
+		}
+		return SUCCESS;
 	}
 
 	public String register() {
 		User user = userService.registerUser(this.user);
-		return user == null ? ERROR : SUCCESS;
+		String msg = null;
+		ValueStack valueStack = ActionContext.getContext().getValueStack();
+		if (user != null) {
+			msg = "注册成功，请登陆！";
+		} else {
+			msg = "注册失败，该用户名已被占用，请重新填写表单！";
+		}
+		valueStack.set("msg", msg);
+		return user != null ? SUCCESS : ERROR;
 	}
 }

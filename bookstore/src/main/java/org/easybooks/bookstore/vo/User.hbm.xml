@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 2020年10月30日 下午3:55:51 by Hibernate Tools 5.4.21.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true"
+	default-access="property" default-cascade="none" default-lazy="true">
+	<class catalog="bookStore" dynamic-insert="false"
+		dynamic-update="false" mutable="true"
+		name="org.easybooks.bookstore.vo.User" optimistic-lock="version"
+		polymorphism="implicit" select-before-update="false" table="user">
+		<id name="userId" type="java.lang.Integer">
+			<column name="userId" />
+			<generator class="identity" />
+		</id>
+		<property generated="never" lazy="false" name="userName"
+			optimistic-lock="true" type="string" unique="false">
+			<column length="20" name="userName" not-null="true" />
+		</property>
+		<property generated="never" lazy="false" name="passWord"
+			optimistic-lock="true" type="string" unique="false">
+			<column length="20" name="passWord" not-null="true" />
+		</property>
+		<property generated="never" lazy="false" name="sex"
+			optimistic-lock="true" type="string" unique="false">
+			<column length="4" name="sex" />
+		</property>
+		<property generated="never" lazy="false" name="age"
+			optimistic-lock="true" type="java.lang.Integer" unique="false">
+			<column name="age" />
+		</property>
+		<set embed-xml="true" fetch="select" inverse="true" lazy="true"
+			mutable="true" name="orders" optimistic-lock="true" sort="unsorted"
+			table="order">
+			<key on-delete="noaction">
+				<column name="userId" not-null="true" />
+			</key>
+			<one-to-many class="org.easybooks.bookstore.vo.Order"
+				embed-xml="true" not-found="exception" />
+		</set>
+	</class>
+</hibernate-mapping>

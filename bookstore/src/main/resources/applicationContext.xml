@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp2.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName"
+			value="com.mysql.cj.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/bookStore?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;useUnicode=true&amp;characterEncoding=UTF-8" />
+		<property name="username" value="pluto" />
+		<property name="password" value="Ldc0504.@" />
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="hibernateProperties">
+			<value>
+				hibernate.dialect=org.hibernate.dialect.MySQLDialect
+			</value>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>org/easybooks/bookstore/vo/User.hbm.xml</value>
+				<value>org/easybooks/bookstore/vo/Book.hbm.xml</value>
+				<value>org/easybooks/bookstore/vo/Catalog.hbm.xml</value>
+				<value>org/easybooks/bookstore/vo/OrderItem.hbm.xml</value>
+				<value>org/easybooks/bookstore/vo/Order.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="txManager"
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="baseDAO" class="org.easybooks.bookstore.dao.BaseDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="userDAO"
+		class="org.easybooks.bookstore.dao.impl.UserDAO" parent="baseDAO" />
+
+	<bean id="userService"
+		class="org.easybooks.bookstore.service.impl.UserService">
+		<property name="userDAO" ref="userDAO" />
+	</bean>
+
+	<bean id="userAction"
+		class="org.easybooks.bookstore.action.UserAction">
+		<property name="userService" ref="userService" />
+	</bean>
+
+	<bean id="catalogDAO"
+		class="org.easybooks.bookstore.dao.impl.CatalogDAO" parent="baseDAO" />
+
+	<bean id="catalogService"
+		class="org.easybooks.bookstore.service.impl.CatalogService">
+		<property name="catalogDAO" ref="catalogDAO" />
+	</bean>
+
+	<bean id="bookDAO"
+		class="org.easybooks.bookstore.dao.impl.BookDAO" parent="baseDAO" />
+
+	<bean id="bookService"
+		class="org.easybooks.bookstore.service.impl.BookService">
+		<property name="bookDAO" ref="bookDAO" />
+	</bean>
+
+	<bean id="bookAction"
+		class="org.easybooks.bookstore.action.BookAction">
+		<property name="catalogService" ref="catalogService" />
+		<property name="bookService" ref="bookService" />
+	</bean>
+
+	<bean id="shoppingAction"
+		class="org.easybooks.bookstore.action.ShoppingAction">
+		<property name="bookService" ref="bookService" />
+		<property name="orderService" ref="orderService" />
+	</bean>
+
+	<bean id="orderDAO"
+		class="org.easybooks.bookstore.dao.impl.OrderDAO" parent="baseDAO" />
+
+	<bean id="orderService"
+		class="org.easybooks.bookstore.service.impl.OrderService">
+		<property name="orderDAO" ref="orderDAO" />
+	</bean>
+
+	<tx:annotation-driven
+		transaction-manager="txManager" />
+
+</beans>

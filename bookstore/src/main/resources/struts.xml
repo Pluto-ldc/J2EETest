@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="default" extends="struts-default">
+
+		<action name="register" class="userAction" method="register">
+			<result name="success">/login.jsp</result>
+			<result name="error">/register.jsp</result>
+		</action>
+
+		<action name="login" class="userAction">
+			<result name="success" type="redirect">/index.jsp</result>
+			<result name="error">/login.jsp</result>
+		</action>
+
+		<action name="logout" class="userAction" method="logout">
+			<result name="success" type="redirect">/index.jsp</result>
+		</action>
+
+		<action name="checkUser" class="userAction" method="checkUser" />
+
+		<action name="browseCatalog" class="bookAction" method="browseCatalog">
+			<result name="success">/menu.jsp</result>
+		</action>
+
+		<action name="newBook" class="bookAction" method="browseNewBook">
+			<result name="success">/browseNewBook.jsp</result>
+		</action>
+		
+        <action name="browseBookPaging" class="bookAction" method="browseBookPaging">
+        	<result name="success">/browseBookPaging.jsp</result>
+        </action>
+        
+        <action name="searchBook" class="bookAction" method="searchBook">
+        	<result name="success">/searchBook_result.jsp</result>
+        </action>
+        
+        <action name="addToCart" class="shoppingAction" method="addToCart">
+        	<result name="success">/addToCart_success.jsp</result>
+        </action>
+        
+         <action name="deleteBook" class="shoppingAction" method="deleteBook">
+            <result name="success">/showCart.jsp</result>
+        </action>
+        
+        <action name="updateCart" class="shoppingAction" method="updateCart">
+        	<result name="success">/showCart.jsp</result>
+        </action>
+        
+        <action name="checkout" class="shoppingAction" method="checkout">
+            <result name="success">/checkout_success.jsp</result>
+            <result name="error">/login.jsp</result>
+        </action>
+
+	</package>
+</struts>
